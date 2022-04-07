@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(53, 53, 53);
+    font-size: 1.5em;
+    color: whitesmoke;
+    font-family: monospace;
+    text-align: center;
+}
+
+#configure-timer {
+    margin-top: 1em;
+}
+
+#run-timer {
+    font-size: 3em;
+    color: whitesmoke;
+    font-family: monospace;
+}
+
+button {
+    font-family: monospace;
+    font-size: 1em;
+    background-color: aqua;
+}
+
+#reset {
+    margin-top: 2em;
+}
+
+input {
+    font-family: monospace;
+    font-size: 1em;
+}
+
+label {
+    padding: 5px;
+}

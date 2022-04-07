@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break time</title>
+    <script async defer src="timer.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <div id="run-timer">
+        <p id="total-timer"></p>
+        <p id="timer"></p>
+        
+        
+        <button id="reset">Reset</button>
+
+    </div>
+
+    <div id="configure-timer">
+        <button class="start-timer" data-time="1">1 minute</button>
+        <button class="start-timer" data-time="5">5 minutes</button>
+        <button class="start-timer" data-time="10">10 minutes</button>
+        <br>
+        <br>
+        <label>Custom</label><input id="custom-time-input" type="number" min="0">
+        <button id="start-custom">Start</button>
+    </div>
+</body>
+</html>
