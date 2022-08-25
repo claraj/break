@@ -6,6 +6,14 @@ body {
     text-align: center;
 }
 
+#custom-time-input {
+    margin: 1px;
+}
+
+.initial-hidden {
+    display: none;
+}
+
 #configure-timer {
     margin-top: 1em;
 }
@@ -33,4 +41,10 @@ input {
 
 label {
     padding: 5px;
+}
+
+.error {
+    border: 2px rgb(246, 53, 0) solid;
+    /* looks too small without this, missing a pixel somehow */
+    border-bottom: 3px rgb(246, 53, 0) solid;
 }

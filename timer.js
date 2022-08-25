@@ -13,17 +13,32 @@ let interval
 
 runTimerContainer.style.display = 'none'
 
+inputTime.addEventListener('input', function(){
+    // clear error when typing 
+    inputTime.classList.remove('error')
+})
+
 
 convenientButtons.forEach(button => {
     button.addEventListener('click', function() {
         const time = button.dataset.time
-        startTimer(time)
+        if (time <= 0) {
+            // no negative times
+            inputTime.classList.add('error')
+        } else {
+            inputTime.classList.remove('error')
+            startTimer(time)
+        }
     })
 })
 
 customButton.addEventListener('click', function() {
     const time = inputTime.value 
-    if (!!time) {
+    if (time <= 0) {
+        // no negative times
+        inputTime.classList.add('error')
+    }
+    else if (!!time) {
         startTimer(time)
     }
 })
@@ -35,9 +50,13 @@ resetButton.addEventListener('click', function(){
 
 })
 
-function startTimer(time) {   // in minutes 
+function startTimer(time) {   // in minutes. No fractions
     runTimerContainer.style.display = 'block'
     setTimerContainer.style.display = 'none'
+
+    if (time <= 0) {
+        return
+    }
 
     if (time == 1) {
         timerLengthDisplay.innerHTML = `Break for 1 minute`
@@ -51,17 +70,19 @@ function startTimer(time) {   // in minutes
     let totalTime = time * 60
      
     displayTime(totalTime)
+
     totalTime -= 1
 
     interval = setInterval(function() {
 
-        if (totalTime == 0) {
+        if (totalTime <= 0) {
             clearInterval(interval)
-            // timerDisplay.innerHTML = '00:00'  ? 
+            timerDisplay.innerHTML = 'Time is up'  
         }
-
-        displayTime(totalTime)
-        totalTime -= 1
+        else {
+            displayTime(totalTime)
+            totalTime -= 1
+        }
 
     }, 1000)
 
@@ -71,9 +92,7 @@ function startTimer(time) {   // in minutes
 function displayTime(totalTime) {
     let mins = Math.floor(totalTime / 60).toFixed(0)
     let secs = Math.floor(totalTime % 60).toFixed(0)
-    if (secs == '0'){
-       secs = '00'
-    }
+    secs = secs.padStart(2, '0')  // pad with leading 0s
     timerDisplay.innerHTML = `Back in ${mins}:${secs}`
 }
 
